@@ -26,5 +26,23 @@ if(empty($email)) {
 }
 include('index.php');
 
+$myemail = "gamarjoba@gmail.com";
+$myusername ="joni123";
+$mypassword="12345678";
+if(isset($_POST['register_button'])){
+    $email= $_POST['user_email'];
+    $username=$_POST['user_name'];
+    $password=$_POST['user_password'];
+    if ($user_email== $myemail && $user_name==$myusername && $user_password==$mypassword) {
+        setcookie('email', $user_email, time()+60*60*7);
+    }
+    session_start();
+    $_SESSION['email'] =$email;
+    header("location: welcome.php");
+} else{
+    echo "არასწორია, <br> დააჭირეთ აქ <a href='index.php'>, რომ ცადოთ ახლიდან</a>";
+}
+
+
 
 ?>
